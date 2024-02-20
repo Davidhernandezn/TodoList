@@ -1,0 +1,20 @@
+<!-- <p>{{ todo | json }}</p> -->
+
+<div *ngIf="todo">
+    <div>
+        <p *ngIf="todo.createdAt">{{todo.createdAt}}</p>
+        <button (click)="{}">
+            <img src="#" alt="delete">
+        </button>
+    </div>
+
+
+    <div>
+        <span>
+            {{todo.description}}
+        </span>
+
+        <!--Estatus de la tarea-->
+    </div>
+</div>
+
