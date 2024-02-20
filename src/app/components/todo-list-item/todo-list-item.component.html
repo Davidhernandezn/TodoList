@@ -2,9 +2,9 @@
 
 <div *ngIf="todo">
     <div>
-        <p *ngIf="todo.createdAt">{{todo.createdAt}}</p>
+        <p *ngIf="todo.createdAt">{{todo.createdAt | dateFormat}}</p>
         <button (click)="{}">
-            <img src="#" alt="delete">
+            <img src="#" alt="deleted"> 
         </button>
     </div>
 
