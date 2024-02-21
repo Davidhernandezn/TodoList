@@ -1,10 +1,21 @@
-<form (ngSubmit)="addTodo()">
-    <h2>Nueva tarea</h2>
-    <div>
-        <label for="">Descripcion</label>
-        <input type="text" id="description" name="description" [(ngModel)]="newTodoDescription"
-        autocomplete="off">
-    </div>
+<div class="container">
+  <nz-card class="cardForm" nzTitle="Angular ToDoList" >
+  
+  <!--Form para guardar tareas-->
+  <form class="addTodo" (ngSubmit)="addTodo()">
+    <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+      <input type="text" nz-input [(ngModel)]="newTodoDescription"
+      autocomplete="off" id="description" name="description" placeholder="Agrega una tarea"/>
+    </nz-input-group>
+    <ng-template #suffixButton>
+      <button type="submit" nz-button nzType="primary" nzSize="large" nzSearch>Agregar Tarea</button>
+    </ng-template>
+  </form>
 
-    <button type="submit">Agregar Tarea</button>
-</form>
+  </nz-card>
+</div>
+
+
+  <ng-template #extraTemplate>
+    <a>More</a>
+  </ng-template>

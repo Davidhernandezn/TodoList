@@ -1,4 +1,37 @@
-<!-- <p>{{ todo | json }}</p> -->
+<!-- <nz-table >
+    <!-- <thead>
+      <tr>
+        <th>Tareas</th>
+        <th>Fecha</th>
+        <th>Opciones</th>
+      </tr>
+    </thead> 
+
+    <tbody>
+
+      <tr *ngIf="todo">
+        <td >
+          <input type="checkbox" id="myCheckbox" (change)="toggleFunction($event)">
+          <span [style.textDecoration]="isChecked ? 'line-through' : 'none'" *ngIf="!editing">{{todo.description}}</span>
+          <input *ngIf="editing" type="text" [(ngModel)]="todo.description">
+          <button *ngIf="editing" (click)="saveTodo()">Guardar</button>
+        </td>
+
+        <td>
+          <p *ngIf="todo.createdAt">{{todo.createdAt | dateFormat}}</p>
+        </td>
+
+        <td>
+          <button (click)="(removeTodo())">
+            <img src="#" alt="delete">
+          </button>
+          <button (click)="(editTodo())">
+            <img src="#" alt="Editar">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table> -->
 
 <div *ngIf="todo">
     <div>
@@ -12,11 +45,7 @@
     </div>
 
 
-    <!-- <div>
-        <span>
-            {{todo.description}}
-        </span>
-    </div> -->
+
     <div>
         <input type="checkbox" id="myCheckbox" (change)="toggleFunction($event)">
 <span [style.textDecoration]="isChecked ? 'line-through' : 'none'" *ngIf="!editing">{{todo.description}}</span>

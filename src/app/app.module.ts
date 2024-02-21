@@ -8,6 +8,12 @@ import { TodoListItemComponent } from './components/todo-list-item/todo-list-ite
 import { DatePipe } from './pipes/date.pipe';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
 import { FormsModule } from '@angular/forms';
+//NG ZORRO
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,12 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NzButtonModule,
+    NzLayoutModule,
+    NzCardModule,
+    NzTableModule,
+    NzInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

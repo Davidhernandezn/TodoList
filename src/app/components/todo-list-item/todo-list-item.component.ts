@@ -17,6 +17,9 @@ export class TodoListItemComponent implements OnInit {
   editing: boolean = false;
   isChecked: boolean = false;
   public statusOptions = formOptions;
+  completedCount: number = 0;
+  inProgressCount: number = 0;
+
 
   constructor(private todosService: TodosService) {}
 
@@ -51,4 +54,18 @@ export class TodoListItemComponent implements OnInit {
     }
   }
 
+
+//  toggleFunction(event: any) {
+//     this.isChecked = event.target.checked;
+//   //  this.todo.status = this.isChecked ? 'finished' : 'in-progress';
+//    // this.todosService.updateTodo(+this.todo.id, this.todo);
+
+//     if (this.isChecked) {
+//       this.completedCount++;
+//       this.inProgressCount--;
+//     } else {
+//       this.completedCount--;
+//       this.inProgressCount++;
+//     }
+//   }
 }
