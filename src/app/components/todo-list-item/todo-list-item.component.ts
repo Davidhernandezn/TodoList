@@ -13,6 +13,8 @@ export class TodoListItemComponent implements OnInit {
    * Solo recibe una tarea 
    * */
   @Input() todo? : Todo;
+  editing: boolean = false;
+
   constructor(private todosService: TodosService) {}
 
   ngOnInit(): void {
@@ -21,6 +23,17 @@ export class TodoListItemComponent implements OnInit {
   public removeTodo(){
     if(!this.todo)return
     this.todosService.removeTodo(this.todo.id)
+  }
+
+
+  editTodo() {
+    this.editing = true;
+  }
+
+  saveTodo() {
+    this.editing = false;
+    if(!this.todo) return;
+    this.todosService.updateTodo(+this.todo.id, this.todo);
   }
 
 }

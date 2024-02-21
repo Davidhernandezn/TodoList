@@ -6,15 +6,21 @@
         <button (click)="(removeTodo())">
             <img src="#" alt="delete"> 
         </button>
+        <button (click)="(editTodo())">
+            <img src="#" alt="Editar"> 
+        </button>
     </div>
 
 
-    <div>
+    <!-- <div>
         <span>
             {{todo.description}}
         </span>
-
-        <!--Estatus de la tarea-->
+    </div> -->
+    <div>
+        <span *ngIf="!editing">{{todo.description}}</span>
+        <input *ngIf="editing" type="text" [(ngModel)]="todo.description">
+        <button *ngIf="editing" (click)="saveTodo()">Guardar</button>
     </div>
 </div>
 

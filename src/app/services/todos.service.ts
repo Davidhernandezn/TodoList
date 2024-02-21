@@ -77,4 +77,19 @@ export class TodosService {
     localStorage.setItem('todos',JSON.stringify(this.todos));
   }
 
+  /**
+   * Actualizar tarea
+   */
+   updateTodo(id: number, updatedTodo: Todo): void {
+    this.todos = this.todos.map(todo => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          ...updatedTodo
+        };
+      }
+      return todo;
+    });
+    this.update();
+  }
   }
