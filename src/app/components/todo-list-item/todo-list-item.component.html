@@ -3,8 +3,8 @@
 <div *ngIf="todo">
     <div>
         <p *ngIf="todo.createdAt">{{todo.createdAt | dateFormat}}</p>
-        <button (click)="{}">
-            <img src="#" alt="deleted"> 
+        <button (click)="(removeTodo())">
+            <img src="#" alt="delete"> 
         </button>
     </div>
 
