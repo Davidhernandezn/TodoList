@@ -18,7 +18,10 @@
         </span>
     </div> -->
     <div>
-        <span *ngIf="!editing">{{todo.description}}</span>
+        <input type="checkbox" id="myCheckbox" (change)="toggleFunction($event)">
+<span [style.textDecoration]="isChecked ? 'line-through' : 'none'" *ngIf="!editing">{{todo.description}}</span>
+
+
         <input *ngIf="editing" type="text" [(ngModel)]="todo.description">
         <button *ngIf="editing" (click)="saveTodo()">Guardar</button>
     </div>

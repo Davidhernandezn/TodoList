@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { formOptions } from 'src/app/config/option';
 import { Todo } from 'src/app/interfaces/todo.interface';
 import { TodosService } from 'src/app/services/todos.service';
 
@@ -14,6 +15,8 @@ export class TodoListItemComponent implements OnInit {
    * */
   @Input() todo? : Todo;
   editing: boolean = false;
+  isChecked: boolean = false;
+  public statusOptions = formOptions;
 
   constructor(private todosService: TodosService) {}
 
@@ -25,7 +28,6 @@ export class TodoListItemComponent implements OnInit {
     this.todosService.removeTodo(this.todo.id)
   }
 
-
   editTodo() {
     this.editing = true;
   }
@@ -34,6 +36,19 @@ export class TodoListItemComponent implements OnInit {
     this.editing = false;
     if(!this.todo) return;
     this.todosService.updateTodo(+this.todo.id, this.todo);
+  }
+
+
+
+  /**Cambiar estatus de la tarea */
+  toggleFunction(event: any) {
+    if (event.target.checked) {
+      // Lógica a ejecutar cuando el checkbox está marcado
+      this.isChecked = true;
+    } else {
+      // Lógica a ejecutar cuando el checkbox está desmarcado
+      this.isChecked = false;
+    }
   }
 
 }

@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Todo } from '../interfaces/todo.interface';
+import { Todo, TodoStatus } from '../interfaces/todo.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-const tareas: Todo[] = [
-  {
-    id:1,
-    description:'Tarea 1',
-    createdAt: new Date(),
-    status:'empty'
-  },
-  {
-    id:2,
-    description:'Tarea 2',
-    createdAt: new Date(),
-    status:'empty'
-  },
-  {
-    id:3,
-    description:'Tarea 3',
-    createdAt: new Date(),
-    status:'empty'
-  }
-];
+// const tareas: Todo[] = [
+//   {
+//     id:1,
+//     description:'Tarea 1',
+//     createdAt: new Date(),
+//     status:'empty'
+//   },
+//   {
+//     id:2,
+//     description:'Tarea 2',
+//     createdAt: new Date(),
+//     status:'empty'
+//   },
+//   {
+//     id:3,
+//     description:'Tarea 3',
+//     createdAt: new Date(),
+//     status:'empty'
+//   }
+// ];
 
 
 @Injectable({
@@ -30,7 +30,7 @@ const tareas: Todo[] = [
 
 
 export class TodosService {
-  private todos:Todo[]=tareas;
+  private todos:Todo[]=[];
   private todosSubject = new BehaviorSubject<Todo[]>(this.todos);
 
   constructor() { 
@@ -92,4 +92,17 @@ export class TodosService {
     });
     this.update();
   }
+
+
+  /**
+   * Cambiar estatus de la tarea
+   * */
+  public changeTodoStatus(todoId: Todo['id'], newStatus: TodoStatus){
+  const todoIndex = this.todos.findIndex((todo) => todo.id === todoId);
+  
+    if(todoIndex === -1) return;
+    this.todos[todoIndex].status = newStatus;
+    this.update();
+  }
+
   }
