@@ -1,4 +1,10 @@
-
+<br>
+  <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+    <input id="buscador" type="text" nz-input placeholder="Buscar..." [(ngModel)]="searchText"/>
+  </nz-input-group>
+  <ng-template #suffixIconButton>
+    <button nz-button nzType="primary" nzSearch><span nz-icon nzType="search"></span></button>
+  </ng-template>
 
 <nz-table>
   <thead>
@@ -9,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let todo of todoList">
+    <tr *ngFor="let todo of todoList | filter:searchText">
       <td>
         <input
           type="checkbox"

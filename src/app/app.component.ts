@@ -6,22 +6,20 @@ import { TodosService } from './services/todos.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   public title = 'Todo List';
   public todos?: Todo[] = [];
-  private todosSubscription: Subscription = new Subscription;
+  private todosSubscription: Subscription = new Subscription();
 
   constructor(private todosService: TodosService) {
-    this.todosSubscription = this.todosService.getTodos().subscribe(todos => {
+    this.todosSubscription = this.todosService.getTodos().subscribe((todos) => {
       this.todos = todos;
     });
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.todosSubscription.unsubscribe();

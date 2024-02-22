@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoListComponent } from './components/todo-list/todo-list.component';
-import { TodoListItemComponent } from './components/todo-list-item/todo-list-item.component';
 import { DatePipe } from './pipes/date.pipe';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
 import { FormsModule } from '@angular/forms';
@@ -16,14 +13,14 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { TodoListTableComponent } from './components/todo-list-table/todo-list-table.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { FilterPipe } from './pipes/filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    TodoListComponent,
-    TodoListItemComponent,
     DatePipe,
     TodoFormComponent,
-    TodoListTableComponent
+    TodoListTableComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -36,7 +33,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzInputModule,
     NzIconModule
   ],
-  providers: [],
+  providers: [FilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

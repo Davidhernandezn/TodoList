@@ -6,28 +6,26 @@ import { formOptions } from '../../config/option';
 @Component({
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html',
-  styleUrls: ['./todo-form.component.css']
+  styleUrls: ['./todo-form.component.css'],
 })
 export class TodoFormComponent implements OnInit {
-  public newTodoDescription : string = '';
-  public newTodoStatus: {value: TodoStatus, name: string} = formOptions[0];
+  public newTodoDescription: string = '';
+  public newTodoStatus: { value: TodoStatus; name: string } = formOptions[0];
   public statusOptions = formOptions;
   constructor(private todosService: TodosService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  public addTodo(){
+  public addTodo() {
     const newTodo: Todo = {
-    id: Math.random(),
-    description: this.newTodoDescription,
-    status: this.newTodoStatus.value,
-    createdAt: new Date(),
-  };
+      id: Math.random(),
+      description: this.newTodoDescription,
+      status: this.newTodoStatus.value,
+      createdAt: new Date(),
+    };
 
-  this.todosService.addTodo(newTodo);
-
-  this.newTodoDescription = '';
-  this.newTodoStatus = formOptions[0];
+    this.todosService.addTodo(newTodo);
+    this.newTodoDescription = '';
+    this.newTodoStatus = formOptions[0];
   }
 }

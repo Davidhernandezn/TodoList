@@ -8,6 +8,3 @@ export interface Todo {
   
   export type TodoStatus = 'not-started' | 'in-progress' | 'finished';
   
-//   export type FilterStatus = TodoStatus | 'all'
-  
-//   export type Orders = 'newest' | 'oldest'

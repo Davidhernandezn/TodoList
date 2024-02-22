@@ -5,18 +5,21 @@ import { TodosService } from 'src/app/services/todos.service';
 @Component({
   selector: 'app-todo-list-table',
   templateUrl: './todo-list-table.component.html',
-  styleUrls: ['./todo-list-table.component.css']
+  styleUrls: ['./todo-list-table.component.css'],
 })
+
 export class TodoListTableComponent implements OnInit {
   @Input() todoList: Todo[] = [];
   editing: boolean = false;
   isChecked: boolean = false;
   editItem: boolean = true;
   editBtn: boolean = true;
-  
+  searchText: string = '';
   editingTodo: Todo = {
-    id: 0, description: '', createdAt: '',
-    status: 'not-started'
+    id: 0,
+    description: '',
+    createdAt: '',
+    status: 'not-started',
   };
 
   constructor(private todosService: TodosService) {}
@@ -30,36 +33,45 @@ export class TodoListTableComponent implements OnInit {
   /**Cambiar estatus de la tarea */
   toggleFunction(todo: Todo, event: any) {
     if (event.target.checked) {
-      // Lógica a ejecutar cuando el checkbox está marcado
       todo.isChecked = true;
     } else {
-      // Lógica a ejecutar cuando el checkbox está desmarcado
       todo.isChecked = false;
     }
   }
 
+  /**Borrar Tarea */
   deleteTodo(todo: Todo) {
     this.todosService.removeTodo(todo.id);
   }
 
-  /**Editar tarea */
+  /**Habilitat Editar tarea */
   editTodo(todo: Todo) {
-    this.editingTodo = { ...todo }; 
+    this.editingTodo = { ...todo };
     this.editItem = true;
     this.editBtn = false;
   }
-
+  
+  /**Guardar edicion de tarea */
   saveEdit() {
     this.todosService.updateTodo(Number(this.editingTodo.id), this.editingTodo);
     this.editing = false;
-    this.editItem = false
+    this.editItem = false;
     this.editBtn = true;
   }
 
+  /**Metodos para guardar o cancelar mientras se esta editando tarea*/
   cancelEdit() {
     this.editing = false;
-    this.editItem = false
+    this.editItem = false;
     this.editBtn = true;
   }
-  }
 
+  search() {
+    if (!this.searchText) {
+      return this.todoList;
+    }
+    return this.todoList.filter((todo) =>
+      todo.description.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
+}
