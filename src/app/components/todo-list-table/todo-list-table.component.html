@@ -1,3 +1,5 @@
+
+
 <nz-table>
   <thead>
     <tr>
@@ -22,8 +24,8 @@
       </td>
       <td>{{ todo.createdAt | dateFormat }}</td>
       <td>
-        <button nz-button nzType="primary" (click)="editTodo(todo)"><i class="fas fa-pencil-alt"></i></button>
-        <button nz-button (click)="deleteTodo(todo)" nzType="danger"><i class="fas fa-trash"></i></button>
+        <button *ngIf="editBtn" nz-button nzType="primary" (click)="editTodo(todo)"><i class="fas fa-pencil-alt"></i></button>
+        <button *ngIf="editBtn" nz-button (click)="deleteTodo(todo)" nzType="danger"><i class="fas fa-trash"></i></button>
         <div *ngIf="editingTodo.id === todo.id">
           <input type="text" [(ngModel)]="editingTodo.description" *ngIf="editItem" />
           <button nz-button (click)="saveEdit()" *ngIf="editItem">Guardar</button>

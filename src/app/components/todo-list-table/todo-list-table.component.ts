@@ -12,6 +12,8 @@ export class TodoListTableComponent implements OnInit {
   editing: boolean = false;
   isChecked: boolean = false;
   editItem: boolean = true;
+  editBtn: boolean = true;
+  
   editingTodo: Todo = {
     id: 0, description: '', createdAt: '',
     status: 'not-started'
@@ -44,16 +46,20 @@ export class TodoListTableComponent implements OnInit {
   editTodo(todo: Todo) {
     this.editingTodo = { ...todo }; 
     this.editItem = true;
+    this.editBtn = false;
   }
 
   saveEdit() {
     this.todosService.updateTodo(Number(this.editingTodo.id), this.editingTodo);
     this.editing = false;
     this.editItem = false
+    this.editBtn = true;
   }
 
   cancelEdit() {
     this.editing = false;
     this.editItem = false
+    this.editBtn = true;
   }
-}
+  }
+
