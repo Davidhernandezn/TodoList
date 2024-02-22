@@ -11,6 +11,11 @@ export class TodoListTableComponent implements OnInit {
   @Input() todoList: Todo[] = [];
   editing: boolean = false;
   isChecked: boolean = false;
+  editItem: boolean = true;
+  editingTodo: Todo = {
+    id: 0, description: '', createdAt: '',
+    status: 'not-started'
+  };
 
   constructor(private todosService: TodosService) {}
 
@@ -33,5 +38,22 @@ export class TodoListTableComponent implements OnInit {
 
   deleteTodo(todo: Todo) {
     this.todosService.removeTodo(todo.id);
+  }
+
+  /**Editar tarea */
+  editTodo(todo: Todo) {
+    this.editingTodo = { ...todo }; 
+    this.editItem = true;
+  }
+
+  saveEdit() {
+    this.todosService.updateTodo(Number(this.editingTodo.id), this.editingTodo);
+    this.editing = false;
+    this.editItem = false
+  }
+
+  cancelEdit() {
+    this.editing = false;
+    this.editItem = false
   }
 }

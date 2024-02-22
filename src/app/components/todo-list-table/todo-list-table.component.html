@@ -8,24 +8,27 @@
   </thead>
   <tbody>
     <tr *ngFor="let todo of todoList">
-        <td>
-            <input
-              type="checkbox"
-              (change)="toggleFunction(todo, $event)"
-              [checked]="todo.isChecked"
-            /> &nbsp;
-            <span
-              [style.textDecoration]="todo.isChecked ? 'line-through' : 'none'"
-              *ngIf="!editing"
-              >{{ todo.description }}</span
-            >
-          </td>
-
-      <td>{{ todo.createdAt | dateFormat }}</td>
-
       <td>
-        <button nz-button nzType="primary" ><i class="fas fa-pencil-alt"></i></button>
+        <input
+          type="checkbox"
+          (change)="toggleFunction(todo, $event)"
+          [checked]="todo.isChecked"
+        /> &nbsp;
+        <span
+          [style.textDecoration]="todo.isChecked ? 'line-through' : 'none'"
+          *ngIf="!editing"
+          >{{ todo.description }}</span
+        >
+      </td>
+      <td>{{ todo.createdAt | dateFormat }}</td>
+      <td>
+        <button nz-button nzType="primary" (click)="editTodo(todo)"><i class="fas fa-pencil-alt"></i></button>
         <button nz-button (click)="deleteTodo(todo)" nzType="danger"><i class="fas fa-trash"></i></button>
+        <div *ngIf="editingTodo.id === todo.id">
+          <input type="text" [(ngModel)]="editingTodo.description" *ngIf="editItem" />
+          <button nz-button (click)="saveEdit()" *ngIf="editItem">Guardar</button>
+          <button nz-button (click)="cancelEdit()" *ngIf="editItem">Cancelar</button>
+        </div>
       </td>
     </tr>
   </tbody>
