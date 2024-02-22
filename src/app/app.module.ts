@@ -15,7 +15,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { TodoListTableComponent } from './components/todo-list-table/todo-list-table.component';
-
+import { NzIconModule } from 'ng-zorro-antd/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +33,8 @@ import { TodoListTableComponent } from './components/todo-list-table/todo-list-t
     NzLayoutModule,
     NzCardModule,
     NzTableModule,
-    NzInputModule
+    NzInputModule,
+    NzIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

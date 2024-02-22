@@ -2,28 +2,6 @@ import { Injectable } from '@angular/core';
 import { Todo, TodoStatus } from '../interfaces/todo.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-// const tareas: Todo[] = [
-//   {
-//     id:1,
-//     description:'Tarea 1',
-//     createdAt: new Date(),
-//     status:'empty'
-//   },
-//   {
-//     id:2,
-//     description:'Tarea 2',
-//     createdAt: new Date(),
-//     status:'empty'
-//   },
-//   {
-//     id:3,
-//     description:'Tarea 3',
-//     createdAt: new Date(),
-//     status:'empty'
-//   }
-// ];
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -47,10 +25,11 @@ export class TodosService {
   this.update();
   }
 
-  /** 
-  *Eliminar tarea */
-  public removeTodo(todoId: Todo["id"]){
-    this.todos = this.todos.filter((todo) => todo.id != todoId);
+  /**
+   * Eliminar tarea
+   */
+   public removeTodo(todoId: Todo["id"]) {
+    this.todos = this.todos.filter((t) => t.id !== todoId);
     this.update();
   }
 
@@ -104,5 +83,5 @@ export class TodosService {
     this.todos[todoIndex].status = newStatus;
     this.update();
   }
-
+  
   }

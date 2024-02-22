@@ -11,6 +11,7 @@ export class TodoListTableComponent implements OnInit {
   @Input() todoList: Todo[] = [];
   editing: boolean = false;
   isChecked: boolean = false;
+
   constructor(private todosService: TodosService) {}
 
   ngOnInit(): void {
@@ -19,17 +20,18 @@ export class TodoListTableComponent implements OnInit {
     });
   }
 
-    /**Cambiar estatus de la tarea */
-    toggleFunction(todo: Todo, event: any) {
-      if (event.target.checked) {
-        // Lógica a ejecutar cuando el checkbox está marcado
-        todo.isChecked = true;
-      } else {
-        // Lógica a ejecutar cuando el checkbox está desmarcado
-        todo.isChecked = false;
-      }
+  /**Cambiar estatus de la tarea */
+  toggleFunction(todo: Todo, event: any) {
+    if (event.target.checked) {
+      // Lógica a ejecutar cuando el checkbox está marcado
+      todo.isChecked = true;
+    } else {
+      // Lógica a ejecutar cuando el checkbox está desmarcado
+      todo.isChecked = false;
     }
-    
-  
+  }
 
+  deleteTodo(todo: Todo) {
+    this.todosService.removeTodo(todo.id);
+  }
 }
