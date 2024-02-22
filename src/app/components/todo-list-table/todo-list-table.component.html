@@ -1,15 +1,26 @@
 <nz-table>
-    <thead>
-      <tr>
-        <th>Tareas</th>
-        <th>Fecha</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let todo of todoList">
-        <td>{{ todo.description }}</td>
-        <td>{{ todo.createdAt | dateFormat }}</td>
-      </tr>
-    </tbody>
-  </nz-table>
-  
+  <thead>
+    <tr>
+      <th>Tareas</th>
+      <th>Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of todoList">
+        <td>
+            <input
+              type="checkbox"
+              (change)="toggleFunction(todo, $event)"
+              [checked]="todo.isChecked"
+            /> &nbsp;
+            <span
+              [style.textDecoration]="todo.isChecked ? 'line-through' : 'none'"
+              *ngIf="!editing"
+              >{{ todo.description }}</span
+            >
+          </td>
+
+      <td>{{ todo.createdAt | dateFormat }}</td>
+    </tr>
+  </tbody>
+</nz-table>
