@@ -14,6 +14,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { TodoListTableComponent } from './components/todo-list-table/todo-list-table.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     TodoListComponent,
     TodoListItemComponent,
     DatePipe,
-    TodoFormComponent
+    TodoFormComponent,
+    TodoListTableComponent
   ],
   imports: [
     BrowserModule,

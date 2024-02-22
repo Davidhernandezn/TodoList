@@ -1,0 +1,15 @@
+<nz-table>
+    <thead>
+      <tr>
+        <th>Tareas</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todoList">
+        <td>{{ todo.description }}</td>
+        <td>{{ todo.createdAt | dateFormat }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  
